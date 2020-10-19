@@ -164,13 +164,13 @@ class GenerativeModel:
             )
 
             # Picking an exposure with a prior that exposure never goes below
-            # 0.1 * max_tests. The 0.1 only affects early values of Rt when
+            # 0.1 * max_tests. The 0.05 only affects early values of Rt when
             # testing was minimal or when data errors cause underreporting
             # of tests.
             tests = pm.Data("tests", self.observed.total.values, dims=["date"])
             exposure = pm.Deterministic(
                 "exposure",
-                pm.math.clip(tests, self.observed.total.max() * 0.1, 1e9),
+                pm.math.clip(tests, self.observed.total.max() * 0.05, 1e9),
                 dims=["date"]
             )
 
@@ -198,7 +198,7 @@ class GenerativeModel:
 
     def sample(
         self,
-        cores=4,
+        cores=1,
         chains=4,
         tune=700,
         draws=200,
