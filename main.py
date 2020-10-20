@@ -82,4 +82,7 @@ all_filenames = [i for i in glob.glob('*.{}'.format(extension))]
 #combine all files in the list
 result_master = pd.concat([pd.read_csv(f) for f in all_filenames ])
 #export to csv
+result_master= pd.read_csv (r'D:\Users\Georg\Documents\GitHub\covid-model\results\resultado_consolidado\result_master.csv')
+
 result_master.to_csv( "result_master.csv", index=False, encoding='utf-8-sig')
+result_master.to_excel ("result_master.xlsx", index = False, header=True)
