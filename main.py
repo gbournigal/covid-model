@@ -28,9 +28,10 @@ import glob
 df = get_and_process_covidtracking_data(
     run_date=pd.Timestamp.today())
 
+#["Distrito Nacional","Santo Domingo","Santiago","La Vega", "La Altagracia","Duarte",
+ #          "San Cristóbal","La Romana","Puerto Plata","San Pedro de Macorís",
 
-regiones= ["Distrito Nacional","Santo Domingo","Santiago","La Vega", "La Altagracia","Duarte",
-           "San Cristóbal","La Romana","Puerto Plata","San Pedro de Macorís","San Juan",
+regiones= ["San Juan",
            "Azua","Peravia","Espaillat","Sánchez Ramírez"]
            
 for i in regiones: 
