@@ -28,14 +28,16 @@ import glob
 df = get_and_process_covidtracking_data(
     run_date=pd.Timestamp.today())
 
-regiones= ["Distrito Nacional","Santo Domingo","Santiago","La Vega", "La Altagracia","Duarte",
-           "San Cristóbal","La Romana","Puerto Plata","San Pedro de Macorís","San Juan",
-           "Azua","Peravia","Espaillat","Sánchez Ramírez"]
+#,"La Vega", "La Altagracia","Duarte",
+          # "San Cristóbal","La Romana","Puerto Plata","San Pedro de Macorís","San Juan",
+           #"Azua","Peravia","Espaillat","Sánchez Ramírez"
+
+regiones= ["Distrito Nacional","Santo Domingo","Santiago"]
            
 for i in regiones: 
     region=i
     
-    model_data = df.loc[region]
+    model_data = df.loc[region] 
     gm = GenerativeModel(region, model_data)
     gm.sample()
     result = summarize_inference_data(gm.inference_data)
