@@ -28,6 +28,9 @@ def process_covidtracking_data(data: pd.DataFrame, run_date: pd.Timestamp):
 
     # Now work with daily counts
     data = data.diff().dropna().clip(0, None).sort_index()
+    
+    zero_filter = (data.positive >= data.total)
+    data.loc[zero_filter, :] = 0
 
     # At the real time of `run_date`, the data for `run_date` is not yet available!
     # Cutting it away is important for backtesting!
