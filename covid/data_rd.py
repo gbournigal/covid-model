@@ -31,6 +31,8 @@ def process_covidtracking_data(data: pd.DataFrame, run_date: pd.Timestamp):
     
     zero_filter = (data.positive >= data.total)
     data.loc[zero_filter, :] = 0
+    data.loc[idx["La Romana", pd.Timestamp("2020-12-02")], :] = 0
+
 
     # At the real time of `run_date`, the data for `run_date` is not yet available!
     # Cutting it away is important for backtesting!
